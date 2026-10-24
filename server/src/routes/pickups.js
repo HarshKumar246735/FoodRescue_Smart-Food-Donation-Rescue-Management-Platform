@@ -1,0 +1,21 @@
+import { Router } from 'express';
+import * as c from '../controllers/pickups.js';
+import { authenticate, authorize } from '../middleware/auth.js';
+import { validate } from '../middleware/validate.js';
+import { assignSchema, handoverVerifySchema, idParam } from '../validators/index.js';
+
+const r = Router(); r.use(authenticate);
+const id = validate(idParam, 'params');
+r.get('/available', authorize('volunteer'), c.available);
+r.get('/mine', authorize('volunteer'), c.mine);
+r.get('/party', authorize('donor', 'ngo'), c.forParty);
+r.get('/:id', id, c.getOne);
+r.post('/:id/accept', id, authorize('volunteer'), c.accept);
+r.post('/:id/decline', id, authorize('volunteer'), c.decline);
+r.post('/:id/assign', id, authorize('donor', 'admin'), validate(assignSchema), c.assign);
+r.post('/:id/start', id, authorize('volunteer'), c.start);
+r.post('/:id/cancel', id, authorize('volunteer'), c.cancel);
+r.post('/:id/handover-token', id, authorize('donor', 'ngo'), c.handoverToken);
+r.post('/:id/verify', id, authorize('volunteer'), validate(handoverVerifySchema), c.verifyHandover);
+r.post('/:id/sharing', id, authorize('volunteer'), c.setSharing);
+export default r;

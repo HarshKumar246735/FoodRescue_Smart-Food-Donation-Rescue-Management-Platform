@@ -1,0 +1,56 @@
+.auth-wrap { min-height: calc(100vh - 68px); display: grid; place-items: center; padding: var(--s-6) var(--s-4); background: radial-gradient(900px 400px at 0 0, var(--green-100), transparent 60%), var(--bg); }
+.auth-card { width: min(460px, 100%); } .auth-card.wide { width: min(560px, 100%); } .auth-card h1 { font-size: 1.7rem; } .auth-links { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: .9rem; }
+.role-pick { display: grid; gap: 10px; grid-template-columns: repeat(3, 1fr); } .role-pick label { border: 1px solid var(--border-strong); border-radius: var(--r-md); padding: 12px 8px; text-align: center; cursor: pointer; font-weight: 600; font-size: .88rem; display: grid; gap: 6px; justify-items: center; } .role-pick input { position: absolute; opacity: 0; }
+.role-pick label:has(input:checked) { border-color: var(--green-700); background: var(--green-50); color: var(--green-900); box-shadow: 0 0 0 2px var(--green-200); } .role-pick label:has(input:focus-visible) { outline: 3px solid #86efac; }
+@media (max-width: 480px) { .role-pick { grid-template-columns: 1fr; } }
+
+.demo-accounts {
+  padding: 18px;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--r-md);
+  background: var(--surface);
+}
+
+.demo-accounts h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.demo-accounts > p {
+  margin: 0 0 14px;
+  font-size: 0.9rem;
+}
+
+.demo-account-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.demo-account-button {
+  padding: 9px 16px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.demo-account-button:hover {
+  border-color: var(--green-700);
+  background: var(--green-50);
+}
+
+.demo-account-button:focus-visible {
+  outline: 2px solid var(--green-700);
+  outline-offset: 3px;
+}
+
+.demo-account-note {
+  margin: 12px 0 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+

@@ -1,0 +1,61 @@
+# Render Blueprint. Create it from the dashboard: New > Blueprint > pick this repository.
+# Fill every `sync: false` variable in the dashboard (secrets are never committed).
+services:
+  - type: web
+    name: foodrescue-api
+    runtime: node
+    rootDir: server
+    # Use at least the "starter" plan for the API: free instances spin down when idle, which pauses
+    # background jobs and drops Socket.IO connections.
+    plan: starter
+    buildCommand: npm ci --omit=dev
+    startCommand: npm start
+    healthCheckPath: /api/v1/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CLIENT_URL
+        sync: false # e.g. https://foodrescue.vercel.app
+      - key: CLIENT_ORIGINS
+        sync: false # comma-separated allowlist, e.g. https://foodrescue.vercel.app
+      - key: APP_BASE_URL
+        sync: false # same as CLIENT_URL; used in email links
+      - key: COOKIE_NAME
+        value: foodrescue_token
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        value: "587"
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: EMAIL_FROM
+        sync: false
+      - key: GEOCODER_URL
+        value: https://api.geoapify.com/v1/geocode/search
+      - key: GEOCODER_API_KEY
+        sync: false
+      - key: REDIS_URL
+        fromService:
+          type: keyvalue
+          name: foodrescue-redis
+          property: connectionString
+
+  # BullMQ requires the "noeviction" policy so queued jobs are never dropped.
+  - type: keyvalue
+    name: foodrescue-redis
+    plan: free
+    maxmemoryPolicy: noeviction
+    ipAllowList: [] # private network only; only your Render services can connect

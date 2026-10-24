@@ -1,0 +1,14 @@
+{
+  "name": "foodrescue",
+  "private": true,
+  "version": "1.0.0",
+  "description": "FoodRescue - surplus food redistribution platform (MERN)",
+  "scripts": {
+    "install:all": "npm install --prefix server && npm install --prefix client",
+    "dev": "concurrently -n server,client -c green,cyan \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "build": "npm run build --prefix client",
+    "test": "npm test --prefix server && npm test --prefix client",
+    "seed": "npm run seed --prefix server"
+  },
+  "devDependencies": { "concurrently": "^9.0.1" }
+}
