@@ -1,6 +1,12 @@
 # 🍃 FoodRescue
 
+## 📸 Dashboard Preview
+
+![FoodRescue Dashboard](./screenshots/dashboard.png)
+
 **FoodRescue** is a MERN stack application that connects restaurants and food donors with NGOs and volunteers to reduce food waste.
+
+
 
 Donors publish surplus food, verified NGOs request food, and volunteers help collect and deliver it.
 
