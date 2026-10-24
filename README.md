@@ -1,4 +1,6 @@
 # 🍃 FoodRescue
+<img width="1535" height="930" alt="image" src="https://github.com/user-attachments/assets/8e26c693-bc95-4a4f-9d67-0e8e64980372" />
+
 
 **FoodRescue** is a MERN stack application that connects restaurants and food donors with NGOs and volunteers to reduce food waste.
 
