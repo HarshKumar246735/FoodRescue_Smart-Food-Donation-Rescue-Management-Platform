@@ -1,5 +1,4 @@
 # 🍃 FoodRescue
-
 ## 📸 Dashboard Preview
 
 ![FoodRescue Dashboard](./screenshots/dashboard.png)
