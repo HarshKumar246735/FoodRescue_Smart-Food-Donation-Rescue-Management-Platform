@@ -1,6 +1,4 @@
 # 🍃 FoodRescue
-<img width="1535" height="930" alt="Screenshot 2026-10-24 161952" src="https://github.com/user-attachments/assets/d6716268-94ba-4630-a4dc-572023c557d6" />
-<img width="1917" height="917" alt="image" src="https://github.com/user-attachments/assets/6c4a1f83-7ea2-49d6-9219-70bfde60728b" />
 
 
 
