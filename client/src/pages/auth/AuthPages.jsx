@@ -41,25 +41,30 @@ const Shell = ({ title, sub, children, wide }) => (
 
 // Demo accounts are available only during local development.
 // Set VITE_DEMO_PASSWORD in client/.env to fill the password.
+const DEMO_PASSWORD = 'FoodRescueDemo@2026';
+
 const DEMO_ACCOUNTS = {
   admin: {
     label: 'Admin',
     email: 'admin@foodrescue.test',
+    password: DEMO_PASSWORD,
   },
   donor: {
     label: 'Donor',
     email: 'donor@foodrescue.test',
+    password: DEMO_PASSWORD,
   },
   ngo: {
     label: 'NGO',
     email: 'ngo@foodrescue.test',
+    password: DEMO_PASSWORD,
   },
   volunteer: {
     label: 'Volunteer',
     email: 'volunteer@foodrescue.test',
+    password: DEMO_PASSWORD,
   },
 };
-
 
 function DemoAccounts({ onSelect }) {
   return (
@@ -107,19 +112,18 @@ export function Login() {
   const [busy, setBusy] = useState(false);
 
   const fillDemoAccount = (role) => {
-    const account = DEMO_ACCOUNTS[role];
+  const account = DEMO_ACCOUNTS[role];
 
-    if (!account) return;
+  if (!account) return;
 
-    setF({
-      email: account.email,
-      password: import.meta.env.VITE_DEMO_PASSWORD || '',
-    });
+  setF({
+    email: account.email,
+    password: account.password,
+  });
 
-    setErr('');
-
-    toast.success(`${account.label} demo account selected`);
-  };
+  setErr('');
+  toast.success(`${account.label} demo account selected`);
+};
 
   if (user) {
     return (
