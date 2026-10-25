@@ -60,9 +60,8 @@ const DEMO_ACCOUNTS = {
   },
 };
 
-function DemoAccounts({ onSelect }) {
-  if (!import.meta.env.DEV) return null;
 
+function DemoAccounts({ onSelect }) {
   return (
     <div className="demo-accounts">
       <h3>Demo accounts</h3>
@@ -85,11 +84,13 @@ function DemoAccounts({ onSelect }) {
       </div>
 
       <p className="demo-account-note">
-        Local development accounts only.
+        Select an account, then click Log in.
       </p>
     </div>
   );
 }
+
+
 
 export function Login() {
   const { login, user } = useAuth();
